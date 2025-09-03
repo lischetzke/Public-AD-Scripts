@@ -3222,6 +3222,9 @@ Function createTempCanaryObject($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -3238,6 +3241,9 @@ Function createTempCanaryObject($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -3285,6 +3291,9 @@ Function createTempCanaryObject($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 		Logging "" "ERROR"
 		Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+		}
 	}
 
 	# Check The Temporary Canary Object Exists And Was created In AD
@@ -3304,6 +3313,9 @@ Function createTempCanaryObject($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -3321,6 +3333,9 @@ Function createTempCanaryObject($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($targetObjectToCheck) {
@@ -3420,6 +3435,9 @@ Function retrieveObjectMetadata($targetedADdomainRWDCFQDN, $ObjectDN, $localADfo
 		Logging "" "ERROR"
 		Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+		}
 	}
 
 	If ($objectMetadata) {
@@ -3446,6 +3464,9 @@ Function setPasswordOfADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -3463,6 +3484,9 @@ Function setPasswordOfADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -3526,6 +3550,9 @@ Function setPasswordOfADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 		Logging "" "ERROR"
 		Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+		}
 	}
 
 	# Retrieve The KrgTgt Object In The AD Domain AFTER THE PASSWORD SET
@@ -3545,6 +3572,9 @@ Function setPasswordOfADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -3562,6 +3592,9 @@ Function setPasswordOfADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountName
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -3632,6 +3665,9 @@ Function replicateSingleADObject($sourceDCNTDSSettingsObjectDN, $targetDCFQDN, $
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -3647,6 +3683,9 @@ Function replicateSingleADObject($sourceDCNTDSSettingsObjectDN, $targetDCFQDN, $
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -3664,6 +3703,9 @@ Function replicateSingleADObject($sourceDCNTDSSettingsObjectDN, $targetDCFQDN, $
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -3681,6 +3723,9 @@ Function replicateSingleADObject($sourceDCNTDSSettingsObjectDN, $targetDCFQDN, $
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -3697,6 +3742,9 @@ Function replicateSingleADObject($sourceDCNTDSSettingsObjectDN, $targetDCFQDN, $
 		Logging "" "ERROR"
 		Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+		}
 	}
 }
 
@@ -3722,6 +3770,9 @@ Function deleteTempCanaryObject($targetedADdomainRWDCFQDN, $targetObjectToCheckD
 		Logging "" "ERROR"
 		Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+		}
 	}
 
 	# Retrieve The Temporary Canary Object From The AD Domain And If It Does Not Exist It Was Deleted Successfully
@@ -3741,6 +3792,9 @@ Function deleteTempCanaryObject($targetedADdomainRWDCFQDN, $targetObjectToCheckD
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -3758,6 +3812,9 @@ Function deleteTempCanaryObject($targetedADdomainRWDCFQDN, $targetObjectToCheckD
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If (!$targetObjectToCheck) {
@@ -3849,6 +3906,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 						Logging "" "ERROR"
 						Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 						Logging "" "ERROR"
+						If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+							$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+						}
 					}
 				}
 				If ($localADforest -eq $false -And $adminCrds) {
@@ -3866,6 +3926,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 						Logging "" "ERROR"
 						Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 						Logging "" "ERROR"
+						If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+							$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+						}
 					}
 				}
 
@@ -3942,6 +4005,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 					If ($localADforest -eq $false -And $adminCrds) {
@@ -3959,6 +4025,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 				}
@@ -3982,6 +4051,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 					If ($localADforest -eq $false -And $adminCrds) {
@@ -3999,6 +4071,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 
@@ -4117,6 +4192,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -4134,6 +4212,9 @@ Function checkADReplicationConvergence($targetedADdomainFQDN, $targetedADdomainS
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 
@@ -4171,6 +4252,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -4187,6 +4271,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -4250,6 +4337,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -4267,6 +4357,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		$deniedRODCPwdReplGroupObjectDN = $deniedRODCPwdReplGroupObject.distinguishedName
@@ -4293,6 +4386,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -4310,6 +4406,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		$allowedRODCPwdReplGroupObjectDN = $allowedRODCPwdReplGroupObject.distinguishedName
@@ -4335,6 +4434,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -4352,6 +4454,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($testKrbTgtObject) {
@@ -4376,6 +4481,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -4392,6 +4500,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			Logging "  --> Updated Description For Existing Test KrbTgt Account [$testKrbTgtObjectDN] on RWDC [$targetedADdomainRWDCFQDN] Due To Mismatch!..." "REMARK"
@@ -4416,6 +4527,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -4434,6 +4548,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 		}
@@ -4454,6 +4571,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -4472,6 +4592,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 		}
@@ -4513,6 +4636,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -4529,6 +4655,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 		} Catch {
@@ -4541,6 +4670,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 			#Logging "" "ERROR"
 			#Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			#Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 
 		# Check The The Test/Bogus KrbTgt Account Exists And Was created In AD
@@ -4560,6 +4692,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -4577,6 +4712,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($testKrbTgtObject) {
@@ -4612,6 +4750,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -4631,6 +4772,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			Logging "  --> Test KrbTgt Account [$testKrbTgtObjectDN] ADDED AS MEMBER OF [$deniedRODCPwdReplGroupObjectName]!..." "REMARK"
@@ -4656,6 +4800,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -4675,6 +4822,9 @@ Function createTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtInUseByDCFQ
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			Logging "  --> Test KrbTgt Account [$testKrbTgtObjectDN] ADDED AS MEMBER OF [$allowedRODCPwdReplGroupObjectName]!..." "REMARK"
@@ -4711,6 +4861,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 
 	}
@@ -4729,6 +4882,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($testKrbTgtObject) {
@@ -4752,6 +4908,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -4768,6 +4927,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		$testKrbTgtObject = $null
@@ -4786,6 +4948,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -4803,6 +4968,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If (!$testKrbTgtObject) {
@@ -4812,6 +4980,9 @@ Function deleteTestKrbTgtADAccount($targetedADdomainRWDCFQDN, $krbTgtSamAccountN
 			Logging "  --> Test KrbTgt Account [$testKrbTgtObjectDN] FAILED TO BE DELETED on RWDC [$targetedADdomainRWDCFQDN]!..." "ERROR"
 			Logging "  --> Manually delete the Test KrbTgt Account [$testKrbTgtObjectDN] on RWDC [$targetedADdomainRWDCFQDN]!..." "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	} Else {
 		# If It Does Not Exist In AD
@@ -6346,6 +6517,9 @@ If ($thisADDomain) {
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -6363,6 +6537,9 @@ If ($thisADDomain) {
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 
@@ -6382,6 +6559,9 @@ If ($thisADDomain) {
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($localADforest -eq $false -And $adminCrds) {
@@ -6398,6 +6578,9 @@ If ($thisADDomain) {
 			Logging "" "ERROR"
 			Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+			}
 		}
 	}
 	If ($targetedADdomainDomainFunctionalModeLevel -eq 7 -And $targetedADdomainDomainFunctionalMode -eq "Unknown") {
@@ -6448,6 +6631,9 @@ If ($thisADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			} Else {
 				$kerberosPolicyMaxTgtAgeObject = New-Object -TypeName PSObject -Property @{
@@ -6527,6 +6713,9 @@ If ($thisADDomain) {
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					} Else {
 						$kerberosPolicyMaxTgtAgeObject = New-Object -TypeName PSObject -Property @{
@@ -6623,6 +6812,9 @@ If ($thisADDomain) {
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					} Else {
 						$kerberosPolicyMaxTgtAgeObject = New-Object -TypeName PSObject -Property @{
@@ -6786,6 +6978,9 @@ If ($listOfRWDCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -6803,6 +6998,9 @@ If ($listOfRWDCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 
@@ -6838,6 +7036,9 @@ If ($listOfRWDCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -6855,6 +7056,9 @@ If ($listOfRWDCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		# Retrieve The Object Of The KrbTgt Account
@@ -6932,6 +7136,9 @@ If ($listOfRWDCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -6947,6 +7154,9 @@ If ($listOfRWDCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($rwdcRootDSEObj.Path -eq $null) {
@@ -7020,6 +7230,9 @@ If ($listOfRODCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -7039,6 +7252,9 @@ If ($listOfRODCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 
@@ -7066,6 +7282,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -7083,6 +7302,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 		}
@@ -7103,6 +7325,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -7120,6 +7345,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 		}
@@ -7141,6 +7369,9 @@ If ($listOfRODCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($localADforest -eq $false -And $adminCrds) {
@@ -7158,6 +7389,9 @@ If ($listOfRODCsInADDomain) {
 				Logging "" "ERROR"
 				Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+				}
 			}
 		}
 		If ($rodcKrbTgtObject) {
@@ -7236,6 +7470,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -7251,6 +7488,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($rodcRootDSEObj.Path -eq $null) {
@@ -7302,6 +7542,9 @@ If ($listOfRODCsInADDomain) {
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 
 				# For Every DSA DN Of The Source RWDC Retrieved
@@ -7327,6 +7570,9 @@ If ($listOfRODCsInADDomain) {
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 					If ($localADforest -eq $false -And $adminCrds) {
@@ -7342,6 +7588,9 @@ If ($listOfRODCsInADDomain) {
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 
@@ -7419,6 +7668,9 @@ Try {
 	Logging "" "ERROR"
 	Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 	Logging "" "ERROR"
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+	}
 }
 If ($krbTgtAAD) {
 	Logging "" "REMARK"
@@ -7813,6 +8065,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 			If ($localADforest -eq $false -And $adminCrds) {
@@ -7830,6 +8085,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 					Logging "" "ERROR"
 					Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 					Logging "" "ERROR"
+					If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+						$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+					}
 				}
 			}
 
@@ -7953,6 +8211,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 					If ($localADforest -eq $false -And $adminCrds) {
@@ -7970,6 +8231,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 							Logging "" "ERROR"
 							Logging "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" "ERROR"
 							Logging "" "ERROR"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+							}
 						}
 					}
 
@@ -8124,6 +8388,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 						# If The KrbTgt Account Object Does Not Exist (You're In Deep Sh!t If The Account Does Not Exist! :-))
 						Logging "  --> KrbTgt Account With sAMAccountName '$krbTgtSamAccountName' Does NOT Exist! Skipping..." "ERROR"
 						Logging "" "ERROR"
+						If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+							$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
+						}
 					}
 				}
 			} Else {
