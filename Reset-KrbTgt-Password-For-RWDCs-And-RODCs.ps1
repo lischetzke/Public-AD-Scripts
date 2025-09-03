@@ -4916,6 +4916,53 @@ Function sendMailMessage($smtpServer, $smtpPort, $smtpCredsUserName, $smtpCredsP
 			Write-Host ""
 		}
 	} Else {
+		# Do not sign or encrypt mail
+		If ($useSSLForSMTP -ne "TRUE" -or $sslType.ToUpper() -eq "EXPLICIT") {
+			# Create Mail Message Object
+			$mail = New-Object System.Net.Mail.MailMessage
+			$mail.From = $mailFromSender
+			$mail.To.Add($mailToRecipient)
+			If ($mailCcRecipients.Length -gt 0) {
+				$mailCcRecipients | ForEach-Object {
+					$mail.CC.Add($_)
+				}
+			}
+			$mail.Subject = $mailSubject
+			$mail.Priority = $mailPriority
+			$mail.Body = $mailBody
+			$mail.IsBodyHtml = $true
+			If ($mailAttachments.Length -gt 0) {
+				$mailAttachments | ForEach-Object {
+					$mail.Attachments.Add($_)
+				}
+			}
+
+			# Create SMTP-Client To Send Mail Message
+			$smtp = New-Object System.Net.Mail.SmtpClient($smtpServer, $smtpPort)
+			If ($useSSLForSMTP -eq "TRUE") {
+				$smtp.EnableSsl = $true
+			} Else {
+				$smtp.EnableSsl = $false
+			}
+			If ($null -ne $smtpCredsUserName -And $smtpCredsUserName -ne "LEAVE_EMPTY_OR_LEAVE_AS_IS_OR_SPECIFY" -And $null -ne $smtpCredsPassword -And $smtpCredsPassword -ne "LEAVE_EMPTY_OR_LEAVE_AS_IS_OR_SPECIFY") {
+				$smtp.Credentials = New-Object System.Net.NetworkCredential($smtpCredsUserName, $(ConvertTo-SecureString $smtpCredsPassword -AsPlainText -Force))
+			}
+
+			# Finally Send Mail
+			Try {
+				$smtp.Send($mail)
+			} Catch {
+				Write-Host ""
+				Write-Host "Error Sending Mail..." -ForeGroundColor Red
+				Write-Host ""
+				Write-Host "Exception Type......: $($_.Exception.GetType().FullName)" -ForeGroundColor Red
+				Write-Host ""
+				Write-Host "Exception Message...: $($_.Exception.Message)" -ForeGroundColor Red
+				Write-Host ""
+				Write-Host "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" -ForeGroundColor Red
+				Write-Host ""
+			}
+		}
 		If ($sslType.ToUpper() -eq "IMPLICIT") {
 			# SOURCE: https://nicholasarmstrong.com/2009/12/sending-email-with-powershell-implicit-and-explicit-ssl/
 			# Load System.Web assembly
@@ -4951,52 +4998,6 @@ Function sendMailMessage($smtpServer, $smtpPort, $smtpCredsUserName, $smtpCredsP
 			# Finally Send Mail
 			Try {
 				[System.Web.Mail.SmtpMail]::Send($mail)
-			} Catch {
-				Write-Host ""
-				Write-Host "Error Sending Mail..." -ForeGroundColor Red
-				Write-Host ""
-				Write-Host "Exception Type......: $($_.Exception.GetType().FullName)" -ForeGroundColor Red
-				Write-Host ""
-				Write-Host "Exception Message...: $($_.Exception.Message)" -ForeGroundColor Red
-				Write-Host ""
-				Write-Host "Error On Script Line: $($_.InvocationInfo.ScriptLineNumber)" -ForeGroundColor Red
-				Write-Host ""
-			}
-		}
-		If ($sslType.ToUpper() -eq "EXPLICIT") {
-			# Create Mail Message Object
-			$mail = New-Object System.Net.Mail.MailMessage
-			$mail.From = $mailFromSender
-			$mail.To.Add($mailToRecipient)
-			If ($mailCcRecipients.Length -gt 0) {
-				$mailCcRecipients | ForEach-Object {
-					$mail.CC.Add($_)
-				}
-			}
-			$mail.Subject = $mailSubject
-			$mail.Priority = $mailPriority
-			$mail.Body = $mailBody
-			$mail.IsBodyHtml = $true
-			If ($mailAttachments.Length -gt 0) {
-				$mailAttachments | ForEach-Object {
-					$mail.Attachments.Add($_)
-				}
-			}
-
-			# Create SMTP-Client To Send Mail Message
-			$smtp = New-Object System.Net.Mail.SmtpClient($smtpServer, $smtpPort)
-			If ($useSSLForSMTP -eq "TRUE") {
-				$smtp.EnableSsl = $true
-			} Else {
-				$smtp.EnableSsl = $false
-			}
-			If ($null -ne $smtpCredsUserName -And $smtpCredsUserName -ne "LEAVE_EMPTY_OR_LEAVE_AS_IS_OR_SPECIFY" -And $null -ne $smtpCredsPassword -And $smtpCredsPassword -ne "LEAVE_EMPTY_OR_LEAVE_AS_IS_OR_SPECIFY") {
-				$smtp.Credentials = New-Object System.Net.NetworkCredential($smtpCredsUserName, $(ConvertTo-SecureString $smtpCredsPassword -AsPlainText -Force))
-			}
-
-			# Finally Send Mail
-			Try {
-				$smtp.Send($mail)
 			} Catch {
 				Write-Host ""
 				Write-Host "Error Sending Mail..." -ForeGroundColor Red
@@ -5621,48 +5622,72 @@ If (($modeOfOperationNr -ne 1 -And $modeOfOperationNr -ne 2 -And $modeOfOperatio
 If ($modeOfOperationNr -eq 1) {
 	Logging "  --> Chosen Mode: Mode 1 - Informational Mode (No Changes At All)..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "infoMode")
+	}
 }
 
 # If Mode 2
 If ($modeOfOperationNr -eq 2) {
 	Logging "  --> Chosen Mode: Mode 2 - Simulation Mode | Temporary Canary Object Created To Test Replication Convergence..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "simulModeCanaryObject")
+	}
 }
 
 # If Mode 3
 If ($modeOfOperationNr -eq 3) {
 	Logging "  --> Chosen Mode: Mode 3 - Simulation Mode | Use KrbTgt TEST/BOGUS Accounts - No Password Reset/WhatIf Mode!..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "simulModeKrbTgtTestAccountsWhatIf")
+	}
 }
 
 # If Mode 4
 If ($modeOfOperationNr -eq 4) {
 	Logging "  --> Chosen Mode: Mode 4 - Real Reset Mode | Use KrbTgt TEST/BOGUS Accounts - Password Will Be Reset Once!..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "resetModeKrbTgtTestAccountsResetOnce")
+	}
 }
 
 # If Mode 5
 If ($modeOfOperationNr -eq 5) {
 	Logging "  --> Chosen Mode: Mode 5 - Simulation Mode | Use KrbTgt PROD/REAL Accounts - No Password Reset/WhatIf Mode!..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "simulModeKrbTgtProdAccountsWhatIf")
+	}
 }
 
 # If Mode 6
 If ($modeOfOperationNr -eq 6) {
 	Logging "  --> Chosen Mode: Mode 6 - Real Reset Mode | Use KrbTgt PROD/REAL Accounts - Password Will Be Reset Once!..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "resetModeKrbTgtProdAccountsResetOnce")
+	}
 }
 
 # If Mode 8
 If ($modeOfOperationNr -eq 8) {
 	Logging "  --> Chosen Mode: Mode 8 - Create TEST KrbTgt Accounts..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "On-Demand: Create TestAccounts")
+	}
 }
 
 # If Mode 9
 If ($modeOfOperationNr -eq 9) {
 	Logging "  --> Chosen Mode: Mode 9 - Cleanup TEST KrbTgt Accounts..." "REMARK"
 	Logging ""
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%modeOfOperation%", "On-Demand: Delete TestAccounts")
+	}
 }
 
 ###
@@ -5692,6 +5717,9 @@ If ($targetedADforestFQDN -eq "" -Or $null -eq $targetedADforestFQDN) {
 }
 Logging ""
 Logging "  --> Selected AD Forest: '$targetedADforestFQDN'..." "REMARK"
+If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+	$script:mailBody = $script:mailBody.Replace("%targetedADforestFQDN%", "$($targetedADforestFQDN)")
+}
 
 # Validate The Specified AD Forest And Check A (Forest) Trust Is In Place, If Applicable
 $adForestValidity = $false
@@ -5758,6 +5786,9 @@ If ($adForestValidity -eq $true) {
 			}
 		}
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+		}
 
 		$mailAttachments = @()
 		$mailAttachments += $logFilePath
@@ -5859,6 +5890,9 @@ If ($adForestAccessibility -eq $true) {
 					}
 				}
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+				}
 
 				$mailAttachments = @()
 				$mailAttachments += $logFilePath
@@ -5889,6 +5923,9 @@ If ($adForestAccessibility -eq $true) {
 				}
 			}
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -6020,6 +6057,9 @@ If ($targetedADdomainFQDN -eq "" -Or $null -eq $targetedADdomainFQDN) {
 }
 Logging ""
 Logging "  --> Selected AD Domain: '$targetedADdomainFQDN'..." "REMARK"
+If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+	$script:mailBody = $script:mailBody.Replace("%targetedADdomainFQDN%", "$($targetedADdomainFQDN)")
+}
 
 # Validate The Chosen AD Domain Against The List Of Available AD Domains To See If It Does Exist In The AD Forest
 $adDomainValidity = $false
@@ -6060,6 +6100,9 @@ If ($adDomainValidity -eq $true) {
 			}
 		}
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+		}
 
 		$mailAttachments = @()
 		$mailAttachments += $logFilePath
@@ -6119,6 +6162,9 @@ If ($localADforest -eq $true) {
 					}
 				}
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+				}
 
 				$mailAttachments = @()
 				$mailAttachments += $logFilePath
@@ -6179,6 +6225,9 @@ If ($localADforest -eq $false -And !$adminCrds) {
 					}
 				}
 				Logging "" "ERROR"
+				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+					$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+				}
 
 				$mailAttachments = @()
 				$mailAttachments += $logFilePath
@@ -6230,6 +6279,9 @@ If ($localADforest -eq $false -And $adminCrds) {
 				}
 			}
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -6679,6 +6731,9 @@ If ($targetedADdomainDomainFunctionalModeLevel -ne "Unavailable" -And $targetedA
 			}
 		}
 		Logging "" "ERROR"
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+		}
 
 		$mailAttachments = @()
 		$mailAttachments += $logFilePath
@@ -7457,6 +7512,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 				}
 			}
 			Logging "" "ERROR"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -7517,6 +7575,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 				}
 			}
 			Logging "" "WARNING"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -7529,16 +7590,25 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 	# If KrbTgt Account Scope 1
 	If ($targetKrbTgtAccountNr -eq 1) {
 		$targetKrbTgtAccountDescription = "1 - Scope of KrbTgt in use by all RWDCs in the AD Domain..."
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%targetKrbTgtAccountScope%", "allRWDCs")
+		}
 	}
 
 	# If KrbTgt Account Scope 2
 	If ($targetKrbTgtAccountNr -eq 2) {
 		$targetKrbTgtAccountDescription = "2 - Scope of KrbTgt in use by specific RODC - Single/Multiple RODC(s) in the AD Domain..."
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%targetKrbTgtAccountScope%", "specificRODCs")
+		}
 	}
 
 	# If KrbTgt Account Scope 3
 	If ($targetKrbTgtAccountNr -eq 3) {
 		$targetKrbTgtAccountDescription = "3 - Scope of KrbTgt in use by specific RODC - All RODCs in the AD Domain..."
+		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+			$script:mailBody = $script:mailBody.Replace("%targetKrbTgtAccountScope%", "allRODCs")
+		}
 	}
 	Logging "  --> Chosen Scope KrbTgt Account Target: $targetKrbTgtAccountDescription" "REMARK"
 	Logging ""
@@ -7648,6 +7718,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 				}
 			}
 			Logging "" "WARNING"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -7845,6 +7918,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 								}
 							}
 							Logging "" "WARNING"
+							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+								$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+							}
 
 							$mailAttachments = @()
 							$mailAttachments += $logFilePath
@@ -8027,6 +8103,9 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 										}
 									}
 									Logging "" "WARNING"
+									If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+										$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+									}
 
 									$mailAttachments = @()
 									$mailAttachments += $logFilePath
@@ -8163,6 +8242,9 @@ If ($modeOfOperationNr -eq 8) {
 				}
 			}
 			Logging "" "WARNING"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -8249,6 +8331,9 @@ If ($modeOfOperationNr -eq 9) {
 				}
 			}
 			Logging "" "WARNING"
+			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+			}
 
 			$mailAttachments = @()
 			$mailAttachments += $logFilePath
@@ -8318,6 +8403,9 @@ If ($argsCount -gt 0 -And $sendMailWithLogFile) {
 		}
 	}
 	Logging "" "REMARK"
+	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
+		$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(0, 150, 255)&quot;&gt;CHECK ATTACHED LOGS&lt;/span&gt;")
+	}
 
 	$mailAttachments = @()
 	$mailAttachments += $logFilePath
