@@ -8368,7 +8368,7 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 									}
 									Logging "" "WARNING"
 									If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-										$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
+										$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`">ERROR - Not OK To Reset</span>")
 									}
 
 									$mailAttachments = @()
