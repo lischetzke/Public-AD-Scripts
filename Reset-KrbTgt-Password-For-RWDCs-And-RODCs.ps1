@@ -8671,7 +8671,7 @@ If ($argsCount -gt 0 -And $sendMailWithLogFile) {
 	}
 	Logging "" "REMARK"
 	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-		$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(0, 150, 255)`">CHECK ATTACHED LOGS</span>")
+		$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(0, 200, 0)`">SUCCESS</span>")
 	}
 
 	$mailAttachments = @()
