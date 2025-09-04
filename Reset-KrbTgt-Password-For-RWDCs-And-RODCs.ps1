@@ -5958,7 +5958,7 @@ If ($adForestValidity -eq $true) {
 		}
 		Logging "" "ERROR"
 		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-			$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 		}
 
 		$mailAttachments = @()
@@ -6062,7 +6062,7 @@ If ($adForestAccessibility -eq $true) {
 				}
 				Logging "" "ERROR"
 				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-					$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 				}
 
 				$mailAttachments = @()
@@ -6095,7 +6095,7 @@ If ($adForestAccessibility -eq $true) {
 			}
 			Logging "" "ERROR"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 			}
 
 			$mailAttachments = @()
@@ -6272,7 +6272,7 @@ If ($adDomainValidity -eq $true) {
 		}
 		Logging "" "ERROR"
 		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-			$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 		}
 
 		$mailAttachments = @()
@@ -6334,7 +6334,7 @@ If ($localADforest -eq $true) {
 				}
 				Logging "" "ERROR"
 				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-					$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 				}
 
 				$mailAttachments = @()
@@ -6397,7 +6397,7 @@ If ($localADforest -eq $false -And !$adminCrds) {
 				}
 				Logging "" "ERROR"
 				If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-					$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+					$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 				}
 
 				$mailAttachments = @()
@@ -6451,7 +6451,7 @@ If ($localADforest -eq $false -And $adminCrds) {
 			}
 			Logging "" "ERROR"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 			}
 
 			$mailAttachments = @()
@@ -6924,7 +6924,7 @@ If ($targetedADdomainDomainFunctionalModeLevel -ne "Unavailable" -And $targetedA
 		}
 		Logging "" "ERROR"
 		If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-			$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+			$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 		}
 
 		$mailAttachments = @()
@@ -7765,7 +7765,7 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 			}
 			Logging "" "ERROR"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 0, 0)&quot;&gt;&lt;b&gt;ERROR&lt;/b&gt;&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 0, 0)`"><b>ERROR</b></span>")
 			}
 
 			$mailAttachments = @()
@@ -7828,7 +7828,7 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 			}
 			Logging "" "WARNING"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
 			}
 
 			$mailAttachments = @()
@@ -7971,7 +7971,7 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 			}
 			Logging "" "WARNING"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
 			}
 
 			$mailAttachments = @()
@@ -8177,7 +8177,7 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 							}
 							Logging "" "WARNING"
 							If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-								$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+								$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
 							}
 
 							$mailAttachments = @()
@@ -8368,7 +8368,7 @@ If ($modeOfOperationNr -eq 2 -Or $modeOfOperationNr -eq 3 -Or $modeOfOperationNr
 									}
 									Logging "" "WARNING"
 									If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-										$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+										$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
 									}
 
 									$mailAttachments = @()
@@ -8510,7 +8510,7 @@ If ($modeOfOperationNr -eq 8) {
 			}
 			Logging "" "WARNING"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
 			}
 
 			$mailAttachments = @()
@@ -8599,7 +8599,7 @@ If ($modeOfOperationNr -eq 9) {
 			}
 			Logging "" "WARNING"
 			If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-				$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(255, 127, 0)&quot;&gt;WARNING&lt;/span&gt;")
+				$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(255, 127, 0)`">WARNING</span>")
 			}
 
 			$mailAttachments = @()
@@ -8671,7 +8671,7 @@ If ($argsCount -gt 0 -And $sendMailWithLogFile) {
 	}
 	Logging "" "REMARK"
 	If ($argsCount -gt 0 -And $sendMailWithLogFile) {
-		$script:mailBody = $script:mailBody.Replace("%result%", "&lt;span style=&quot;color: rgb(0, 150, 255)&quot;&gt;CHECK ATTACHED LOGS&lt;/span&gt;")
+		$script:mailBody = $script:mailBody.Replace("%result%", "<span style=`"color: rgb(0, 150, 255)`">CHECK ATTACHED LOGS</span>")
 	}
 
 	$mailAttachments = @()
